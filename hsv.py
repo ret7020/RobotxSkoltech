@@ -21,7 +21,7 @@ cv2.createTrackbar('h2', 'settings', 255, 255, nothing)
 cv2.createTrackbar('s2', 'settings', 255, 255, nothing)
 cv2.createTrackbar('v2', 'settings', 255, 255, nothing)
 crange = [0,0,0, 0,0,0]
-img = get_img.get_img("77.37.184.204")
+img = get_img.get_img("192.168.137.114")
 print(img)
 img = get_field.get_field(img)
 

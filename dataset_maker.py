@@ -2,17 +2,17 @@ import cv2, get_img, get_field, get_bin, get_coords
 import time
 import numpy as np
 
-path = "/home/stephan/Progs/ManipulatorBall/cube_dataset/ball_yellow/"
+path = "/home/stephan/Progs/ManipulatorBall/cube_dataset/45_new/"
 while True:
-    img = get_img.get_img("77.37.184.204")
+    img = get_img.get_img("192.168.137.114")
     img = get_field.get_field(img)
     img_orig = img.copy()
     
     
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV )
 
-    h_min = np.array((5, 76, 4), np.uint8)
-    h_max = np.array((86, 255, 255), np.uint8)
+    h_min = np.array((0, 89, 38), np.uint8)
+    h_max = np.array((80, 255, 255), np.uint8)
     img_bin = cv2.inRange(hsv, h_min, h_max)
 
     kernel = np.ones((5, 5), 'uint8')
@@ -25,7 +25,7 @@ while True:
     
     x, y, w, h = cv2.boundingRect(contour[0])
     
-    img_orig = img_orig[y: y + h, x: x + w]
+    img_orig = img_orig[y - 20: y + h + 20, x - 20: x + w + 20]
 
 
     cv2.imshow("Dataset", img_orig)

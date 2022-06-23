@@ -7,6 +7,6 @@ def get_robot_coords(coords):
         x_r = coord[0]+offset_x
         y_r = coord[1]+offset_y
         x_r, y_r = -y_r, x_r
-        robot_coords.append((x_r,y_r))
+        robot_coords.append((x_r, y_r, obj["object_class"]))
     return robot_coords        
     

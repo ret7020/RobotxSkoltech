@@ -24,15 +24,15 @@ def get_coords(field_img, image, x_size_mm, y_size_mm, model_classificator):
     for contour in contours:
         area = cv2.contourArea(contour)
         if area > 10:
-            
             x, y, w, h = cv2.boundingRect(contour)
             #frames.append((x, y, w, h))
-            object_to_nn = field_img[y: y + h, x: x + w]
+            object_to_nn = field_img[y - 5: y + h + 10, x -5  : x + w + 10]
             object_to_nn = cv2.cvtColor(object_to_nn, cv2.COLOR_BGR2RGB)
+            object_to_nn_image = object_to_nn.copy()
             object_to_nn = Image.fromarray(object_to_nn)
             object_to_nn = transforms_test(object_to_nn).unsqueeze(0)
 
-
+            #cv2.imshow("NN", object_to_nn_image)
             out = model_classificator(object_to_nn)
             _, predicted = torch.max(out.data, 1)
             final_object_type_id = predicted.cpu().numpy()[0]
