@@ -43,8 +43,8 @@ def recognition(window, net=None):
     global rectangles, cubes_puted
     model_classificator = torch.load("model_final.p", map_location=torch.device("cpu"))
     model_classificator.eval()
-    robot = ManipulatorRobot(home_pos_apply=True)
-    #robot = None #debug
+    #robot = ManipulatorRobot(home_pos_apply=False)
+    robot = None #debug
     cv2.namedWindow("image")
     cv2.setMouseCallback("image", click_wrapper)
 
@@ -60,6 +60,7 @@ def recognition(window, net=None):
             else:
                 mask = inference_frame(field, net, INFERENCE_DEVICE)
                 mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
+                cv2.imshow("Masks", mask)
             data_objects = get_coords(field, mask, 286, 200, model_classificator)
             #coords, rectangles
             field = draw_boxes(field, data_objects)

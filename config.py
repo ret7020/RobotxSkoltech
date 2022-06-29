@@ -1,4 +1,4 @@
-CAMERA_IP = '127.0.0.1'
+CAMERA_IP = '77.37.184.204'
 DETECTION_TYPE = 0 #0 - HSV; 1 - NeuralNet
 INFERENCE_DEVICE = "cpu"
 MODEL_WEIGHTS_PATH = "models/trained_model.pth"

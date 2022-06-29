@@ -24,8 +24,8 @@ def get_bin(image):
     return yellow_cords, frames
     '''
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    h_min = np.array((0, 89, 38), np.uint8)
-    h_max = np.array((80, 255, 255), np.uint8)
+    h_min = np.array((0, 44, 72), np.uint8)
+    h_max = np.array((91, 255, 255), np.uint8)
     img_bin = cv2.inRange(hsv, h_min, h_max)
     cv2.imshow("A", img_bin)
     kernel = np.ones((5, 5), 'uint8')
